@@ -1,7 +1,7 @@
 return {
-	['w'] = function(c, dt) c.loc.y = c.loc.y - 100 * dt end,
-	['a'] = function(c, dt) c.loc.x = c.loc.x - 100 * dt end,
-	['s'] = function(c, dt) c.loc.y = c.loc.y + 100 * dt end,
-	['d'] = function(c, dt) c.loc.x = c.loc.x + 100 * dt end,
+	['w'] = function(c, dt) c.acc + vector(0, 1 * c.speed * dt) end,
+	['a'] = function(c, dt) c.acc + vector(-1 * c.speed * dt, 0) end,
+	['s'] = function(c, dt) c.acc + vector(0, -1 * c.speed * dt) end,
+	['d'] = function(c, dt) c.acc + vector(1 * c.speed * dt, 0) end,
 	['q'] = function() love.event.quit() end
 }
