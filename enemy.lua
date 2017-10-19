@@ -1,11 +1,16 @@
 characterspec = require("characterspec")
 
-enemy = characterspec:new()
+require("pl.class").enemy(characterspec)
+
 
 enemy.name = "gfx/enemy.png"
 enemy.speed = 2*100
-enemy.loc = vector(20, 20)
 enemy.direction =-1
+
+function enemy:_init(y)
+	self:super()
+	self.loc = vector(20, y)
+end
 
 function enemy:update(dt)
 	if self.loc.x < 0 then

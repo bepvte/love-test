@@ -1,15 +1,13 @@
-Character = {}
+class = require "pl.class"
+
+class.Character()
 
 vector = require "hump/vector"
 
-function Character:new()
-	o = {
-		name = nil,
-		image = nil,
-		loc = vector(0,0)
-	}
-	self.__index = self
-	return setmetatable(o, self)
+function Character:_init()
+	self.name = nil
+	self.image = nil
+	self.loc = vector(0,0)
 end
 
 function Character:draw()
@@ -22,9 +20,7 @@ function Character:center(x, y)
 end
 
 function Character:load()
-	print(self.name)
 	self.image = love.graphics.newImage(self.name)
-	print(self.image)	
 end
 
 return Character

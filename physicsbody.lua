@@ -1,22 +1,17 @@
 characterspec = require "characterspec"
 
+class = require "pl.class"
 vector = require "hump/vector"
 
-PhysicsBody = {}
-setmetatable(PhysicsBody, {__index = characterspec})
+class.PhysicsBody(characterspec)
 
-function PhysicsBody:new() 
-	inst = characterspec:new()
-
-	inst.acc = vector.new(0,0) 
-	inst.vel = vector.new(0,0)
-	inst.friction = 0.6
-	inst.gravity = 0.6
-	inst.weight = 10
-
-	self.__index = self
-		
-	return setmetatable(inst, self)
+function PhysicsBody:_init()
+	self:super()
+	self.acc = vector.new(0,0) 
+	self.vel = vector.new(0,0)
+	self.friction = 0.6
+	self.gravity = 0.6
+	self.weight = 10
 end
 
 function PhysicsBody:draw()
