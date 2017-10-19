@@ -2,7 +2,8 @@ controls = require("controls")
 
 -- order is drawing order i think
 objects = {
-	require("player")
+	require("player"),
+	require("enemy")
 }
 
 DEBUG = os.getenv("DEBUG")
