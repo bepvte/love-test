@@ -26,8 +26,12 @@ end
 function PhysicsBody:update(dt)
 	self.vel = self.vel * self.friction
 	self.vel = self.vel + (self.acc * self.weight)
-	self.loc = self.loc + self.vel
+	local goalX, goalY = (self.loc + self.vel):unpack()
 	self.acc.x, self.acc.y = 0, 0
+	local actualX, actualY, cols, _ = world:move(self, goalX, goalY)
+	self.loc.x = actualX
+	self.loc.y = actualY
+	return cols
 end
 
 function PhysicsBody:center(x, y)

@@ -21,6 +21,7 @@ function enemy:update(dt)
 		self.loc.x = gameX - self.image:getWidth()
 	end
 	self.loc.x = self.loc.x +  self.direction * dt * self.speed
+	characterspec.update(self, dt)
 end
 
 return enemy
